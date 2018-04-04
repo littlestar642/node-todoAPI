@@ -16,9 +16,13 @@ MongoClient.connect("mongodb://localhost:27017/TodoApp",(err,client)=>{
     //     if(err)return console.log('Unable to insert');
     //     console.log(JSON.stringify(result.ops,undefined,2));
     // })
-    db.collection('Users').find({
-        age:12,location:'India'
-    }).count().then((count)=>{
+    db.collection('users').findOneAndUpdate({
+        name:"avinash"
+    },{$inc:{
+        age:80
+    }},{
+        returnOriginal:false
+    }).then((count)=>{
         console.log(count);
     });
     client.close();
